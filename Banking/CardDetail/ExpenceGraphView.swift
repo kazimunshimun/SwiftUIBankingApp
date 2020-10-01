@@ -16,11 +16,13 @@ struct ExpenceGraphView: View {
                 ZStack {
                     GraphBackgroundView()
                     ExpenceBarGraph(cardManager: cardManager, heigth: geometry.size.height)
+                       // .zIndex(2.0)
                     ExpenceLineGraph(data: cardManager.getExpencesDataBasedOnHeight(maxHeight: geometry.size.height - 40))
                         .trim(to: startAnimation ? 1 : 0)
                         .stroke(lineWidth: 4.0)
                         .foregroundColor(ColorConstants.graphLine)
                         .animation(Animation.easeIn(duration: 2.0).delay(2.0))
+                        .zIndex(1.0)
                 }
                 .onAppear {
                     withAnimation {
